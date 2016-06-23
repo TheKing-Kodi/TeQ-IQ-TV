@@ -30,4 +30,40 @@
             <platform>all</platform>
     </extension>
 </addon>
+
+<addon id="service.TeQLollipopUpdater" name="[COLOR darkorange]TeQ I.Q. TV Build UPDATE Service[/COLOR]" version="1.0" provider-name="Elvis">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.service" library="service.py" start="startup" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">UPDATE for TeQ Iq TV Build for Android Lollipop</summary>
+    <description lang="en">UPDATE Service for TeQ Iq TV</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="service.TeQupdater" name="[COLOR darkorange]TeQ I.Q. TV Build UPDATE Service[/COLOR]" version="1.0" provider-name="Elvis">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.service" library="service.py" start="startup" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">UPDATE for TeQ Iq TV Build</summary>
+    <description lang="en">UPDATE Service for TeQ Iq TV</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="service.TeQWinUpdater" name="[COLOR darkorange]TeQ I.Q. TV Build UPDATE Service[/COLOR]" version="1.0" provider-name="Elvis">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.service" library="service.py" start="startup" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">UPDATE for TeQ Iq TV Build for Windows - Mac - Linux</summary>
+    <description lang="en">UPDATE Service for TeQ Iq TV</description>
+    <platform>all</platform>
+  </extension>
+</addon>
 </addons>
