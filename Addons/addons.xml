@@ -31,7 +31,7 @@
     </extension>
 </addon>
 
-<addon id="service.TeQLollipopUpdater" name="[COLOR darkorange]TeQ I.Q. TV Build UPDATE Service[/COLOR]" version="1.0" provider-name="Elvis">
+<addon id="service.TeQLollipopUpdater" name="[COLOR darkorange]TeQ I.Q. Android TV Build UPDATE Service[/COLOR]" version="1.0" provider-name="Elvis">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>
@@ -43,7 +43,7 @@
   </extension>
 </addon>
 
-<addon id="service.TeQupdater" name="[COLOR darkorange]TeQ I.Q. TV Build UPDATE Service[/COLOR]" version="1.0" provider-name="Elvis">
+<addon id="service.TeQupdater" name="[COLOR darkorange]TeQ I.Q. Android Build UPDATE Service[/COLOR]" version="1.0" provider-name="Elvis">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>
@@ -55,7 +55,7 @@
   </extension>
 </addon>
 
-<addon id="service.TeQWinUpdater" name="[COLOR darkorange]TeQ I.Q. TV Build UPDATE Service[/COLOR]" version="1.0" provider-name="Elvis">
+<addon id="service.TeQWinUpdater" name="[COLOR darkorange]TeQ I.Q. Multi OS Build UPDATE Service[/COLOR]" version="1.0" provider-name="Elvis">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
   </requires>
