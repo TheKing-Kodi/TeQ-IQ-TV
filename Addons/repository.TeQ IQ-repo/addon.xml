@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <addon id="repository.TeQ IQ-repo" name="[COLOR darkorange]TeQ I.Q. Repo[/COLOR] Repository" version="1.0" provider-name="The King">
+        <requires>
+            <import addon="xbmc.addon" version="12.0.0"/>
+        </requires>
+        <extension point="xbmc.addon.repository" name="TeQ I.Q.">
+            <info compressed="false">https://raw.githubusercontent.com/TheKing-Kodi/TeQ-IQ-TV/master/Addons/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/TheKing-Kodi/TeQ-IQ-TV/master/Addons/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.github.com/TheKing-Kodi/TeQ-IQ-TV/tree/master/Addons/</datadir>
+            <hashes>false</hashes>
+        </extension>
+        <extension point="xbmc.addon.metadata">
+            <summary>Install My Addons</summary>
+            <description>Download and install addons from TeQ I.Q.</description>
+            <platform>all</platform>
+    </extension>
+</addon>

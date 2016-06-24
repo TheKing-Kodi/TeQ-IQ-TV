@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.program.teqiqwizard" name="[COLOR darkorange]TeQ IQ Build Wizard[/COLOR]" version="1.0" provider-name="Elvis">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>program executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">TeQ IQ Wizard</summary>
+    <description lang="en">TeQ IQ Wizard by Elvis##</description>
+    <platform>all</platform>
+  </extension>
+</addon>
