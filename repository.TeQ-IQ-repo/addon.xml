@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <addon id="repository.TeQ IQ-repo" name="[COLOR darkorange]TeQ I.Q. Repo[/COLOR] Repository" version="1.0" provider-name="The King">
+    <addon id="repository.TeQ-IQ-repo" name="[COLOR darkorange]TeQ I.Q. Repo[/COLOR] Repository" version="1.0" provider-name="The King">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
         </requires>
