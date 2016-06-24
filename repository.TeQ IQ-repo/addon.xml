@@ -6,7 +6,7 @@
         <extension point="xbmc.addon.repository" name="TeQ I.Q.">
             <info compressed="false">https://raw.githubusercontent.com/TheKing-Kodi/TeQ-IQ-TV/master/addons.xml</info>
             <checksum>https://raw.githubusercontent.com/TheKing-Kodi/TeQ-IQ-TV/master/addons.xml.md5</checksum>
-            <datadir zip="true">https://raw.github.com/TheKing-Kodi/TeQ-IQ-TV/</datadir>
+            <datadir zip="true">https://raw.github.com/TheKing-Kodi/TeQ-IQ-TV/master/</datadir>
             <hashes>false</hashes>
         </extension>
         <extension point="xbmc.addon.metadata">
