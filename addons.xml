@@ -14,6 +14,25 @@
   </extension>
 </addon>
 
+<addon id="plugin.video.teqiqiptv"
+       name="TeQ IQ IPTV"
+       version="1.1"
+       provider-name="TeQIQ IPTV">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">TeQ IQ IPTV</summary>
+    <language>en</language>
+    <description lang="en">TeQ IQ - Live TV / PPV / Sports / Kids / Movies / Entertainment at an affordable price for all.</description>
+     <platform>all</platform>
+  </extension>
+</addon>
+
     <addon id="repository.TeQ-IQ-repo" name="[COLOR darkorange]TeQ I.Q. Repo[/COLOR] Repository" version="1.1" provider-name="The King">
         <requires>
             <import addon="xbmc.addon" version="12.0.0"/>
