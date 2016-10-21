@@ -10,8 +10,8 @@ ADDON = xbmcaddon.Addon(id='plugin.video.teqiqiptv')
 
 Username=xbmcplugin.getSetting(int(sys.argv[1]), 'Username')
 Password=xbmcplugin.getSetting(int(sys.argv[1]), 'Password')
-ServerURL = "http://178.33.226.155:25461/get.php?username=%s&password=%s&type=m3u&output=hls"%(Username,Password,)
-AccLink = "http://178.33.226.155:25461/panel_api.php?username=%s&password=%s"%(Username,Password,)
+ServerURL = "http://teqiq.xyz:2095/get.php?username=%s&password=%s&type=m3u&output=hls"%(Username,Password,)
+AccLink = "http://teqiq.xyz:2095/panel_api.php?username=%s&password=%s"%(Username,Password,)
 addonDir = Addon.getAddonInfo('path').decode("utf-8")
 Images=xbmc.translatePath(os.path.join('special://home','addons',AddonID,'resources/'));
 addon_data_dir = os.path.join(xbmc.translatePath("special://userdata/addon_data" ).decode("utf-8"), AddonID)
@@ -124,7 +124,7 @@ def Clear_Cache():
 def wizard2(name,url,description):
     path = xbmc.translatePath(os.path.join('special://home/addons','packages'))
     dp = xbmcgui.DialogProgress()
-    dp.create("OTT TV WORKING HARD","Downloading ",'', 'Please Wait')
+    dp.create("TeQ IQ IPTV WORKING HARD","Downloading ",'', 'Please Wait')
     lib=os.path.join(path, name+'.zip')
     try:
        os.remove(lib)
@@ -139,7 +139,7 @@ def wizard2(name,url,description):
     print '======================================='
     extract.all(lib,addonfolder,dp)
     dp = xbmcgui.Dialog()
-    dp.ok("OTTTV", 'TV Guide Integration Complete - Now open your TVGuide & Enjoy. Any Issues please ask us on facebook or check the website.', '', '')
+    dp.ok("TeQ IQ IPTV", 'TV Guide Integration Complete - Now open your TVGuide & Enjoy. Any Issues please ask us on facebook or check the website.', '', '')
 def addXMLMenu(name,url,mode,iconimage,fanart,description):
         u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&iconimage="+urllib.quote_plus(iconimage)+"&fanart="+urllib.quote_plus(fanart)+"&description="+urllib.quote_plus(description)
         ok=True
@@ -149,17 +149,17 @@ def addXMLMenu(name,url,mode,iconimage,fanart,description):
         ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
         return ok
 def ExtraMenu():
-    link = OPEN_URL('http://46.105.35.189/development/xml/toolboxextras.xml').replace('\n','').replace('\r','')  #Spaf
+    link = OPEN_URL('http://url/development/xml/toolboxextras.xml').replace('\n','').replace('\r','')  #Spaf
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name,url,iconimage,FanArt,description in match:
         addXMLMenu(name,url,6,iconimage,FanArt,description)
 def Movies():
-    link = OPEN_URL('http://builds.kodiuk.tv/development/xml/moviesandtv.xml').replace('\n','').replace('\r','')  #Spaf
+    link = OPEN_URL('http://url/development/xml/moviesandtv.xml').replace('\n','').replace('\r','')  #Spaf
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name,url,iconimage,FanArt,description in match:
         addXMLMenu(name,url,6,iconimage,FanArt,description)
 def TVShows():
-    link = OPEN_URL('http://builds.kodiuk.tv/development/xml/moviesandtv.xml').replace('\n','').replace('\r','')  #Spaf
+    link = OPEN_URL('http://url/development/xml/moviesandtv.xml').replace('\n','').replace('\r','')  #Spaf
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name,url,iconimage,FanArt,description in match:
         addXMLMenu(name,url,6,iconimage,FanArt,description)
