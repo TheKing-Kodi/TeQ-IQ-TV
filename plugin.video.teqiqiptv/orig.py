@@ -134,7 +134,7 @@ def correctPVR():
 	moist.setSetting(id='epgUrl', value=EPGurl)
 	moist.setSetting(id='m3uCache', value="false")
 	moist.setSetting(id='epgCache', value="false")
-	choice = xbmcgui.Dialog().ok("[COLOR white]PVR SETUP DONE[/COLOR]",'[COLOR white]We\'ve copied your info to the PVR Guide[/COLOR]',' ','[COLOR white]This includes the EPG please allow time to populate now click launch PVR[/COLOR]')
+	choice = xbmcgui.Dialog().ok("[COLOR white]Guide SETUP DONE[/COLOR]",'[COLOR white]We\'ve copied your info to the Guide[/COLOR]',' ','[COLOR white]This includes the EPG please allow time to populate now click launch Guide[/COLOR]')
 	
 
 def LaunchPVR():

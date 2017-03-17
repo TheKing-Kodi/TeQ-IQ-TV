@@ -72,10 +72,10 @@ def peamenyy(params):
        plugintools.log(pnimi+vod_channels("TG9naW4gU3VjY2Vzcw=="))
        plugintools.add_item( action=vod_channels("c2VjdXJpdHlfY2hlY2s="),  title="live TV" , thumbnail=os.path.join(LOAD_LIVE,vod_channels("bGl2ZXR2LnBuZw==")) , fanart=os.path.join(LOAD_LIVE,vod_channels("YmFja2dyb3VuZC5wbmc=")) , folder=True )
        plugintools.add_item( action=vod_channels("ZGV0ZWN0X21vZGlmaWNhdGlvbg=="),   title="VOD" , thumbnail=os.path.join(LOAD_LIVE,vod_channels("dm9kLnBuZw==")) , fanart=os.path.join(LOAD_LIVE,vod_channels("YmFja2dyb3VuZC5wbmc=")) , folder=True )
-       plugintools.addItem('Launch PVR','pvr',12,orig.Images + 'extras.png',orig.Images + 'background.png')
+       plugintools.addItem('Launch Guide','pvr',12,orig.Images + 'extras.png',orig.Images + 'background.png')
        orig.AddDir('Clear Cache','Clear Cache',7,orig.Images + 'clear.png')
        plugintools.add_item( action=vod_channels("bGljZW5zZV9jaGVjaw=="), title="[COLOR yellow][B][I]Settings[/I][/B][/COLOR]" , thumbnail=os.path.join(LOAD_LIVE,vod_channels("bG9nby5wbmc=")) , fanart=os.path.join(LOAD_LIVE,vod_channels("YmFja2dyb3VuZC5wbmc=")), folder=False )
-       plugintools.addItem('[COLOR yellow][B][I]Click to Setup PVR SIMPLE CLIENT[/I][/B][/COLOR]','pvr',11,orig.Images + 'extras.png',orig.Images + 'background.png')
+       plugintools.addItem('[COLOR yellow][B][I]Click to Setup Guide[/I][/B][/COLOR]','pvr',11,orig.Images + 'extras.png',orig.Images + 'background.png')
 	   
     elif orig.mode != 5:
        plugintools.add_item( action=vod_channels("bGljZW5zZV9jaGVjaw=="),  title="[COLOR yellow][B]Click here to enter login[/B][/COLOR]" , thumbnail=os.path.join(LOAD_LIVE,vod_channels("bG9nby5wbmc=")) , fanart=os.path.join(LOAD_LIVE,vod_channels("YmFja2dyb3VuZC5wbmc=")) , folder=False )
@@ -111,7 +111,7 @@ def security_check(params):
           if any(s in kanalinimi for s in a):
             return
         kategoorialink = channel.find(vod_channels("cGxheWxpc3RfdXJs")).text
-        plugintools.add_item( action=get_live("c3RyZWFtX3ZpZGVv"), title="[COLOR red][B][I]"+kanalinimi+"[/I][/B][/COLOR]" , url=kategoorialink , thumbnail=os.path.join(LOAD_LIVE,sync_data("bG9nby5wbmc=")) , fanart="" , folder=True )
+        plugintools.add_item( action=get_live("c3RyZWFtX3ZpZGVv"), title="[COLOR yellow][B]"+kanalinimi+"[/B][/COLOR]" , url=kategoorialink , thumbnail=os.path.join(LOAD_LIVE,sync_data("bG9nby5wbmc=")) , fanart="" , folder=True )
     plugintools.set_view( plugintools.LIST )
 def detect_modification(params):
     plugintools.log(pnimi+vod_channels("Vk9EIE1lbnUg")+repr(params))        
@@ -181,7 +181,7 @@ def stream_video(params):
       plugintools.set_view( plugintools.EPISODES )
     else:
       plugintools.set_view( plugintools.EPISODES )
-    xbmcplugin.addSortMethod(handle=int(sys.argv[1]), sortMethod=xbmcplugin.SORT_METHOD_TITLE)
+
 def get_myaccount(params):
         plugintools.log(pnimi+get_live("Vk9EIGNoYW5uZWxzIG1lbnUg")+repr(params))
         #if vanemalukk == "true":
