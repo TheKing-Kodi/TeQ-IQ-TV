@@ -3,11 +3,10 @@ import common,xbmcvfs,zipfile,downloader,extract
 import GoDev
 from datetime import datetime, timedelta
 import base64, time
-
 AddonID = 'plugin.video.teqiqiptv'
 Addon = xbmcaddon.Addon(AddonID)
 ADDON = xbmcaddon.Addon(id='plugin.video.teqiqiptv')
-
+fanart = "ZmFuYXJ0LmpwZw=="
 Username=xbmcplugin.getSetting(int(sys.argv[1]), 'Username')
 Password=xbmcplugin.getSetting(int(sys.argv[1]), 'Password')
 ServerURL = "http://teqiq.xyz:2095/get.php?username=%s&password=%s&type=m3u&output=hls"%(Username,Password,)
@@ -36,7 +35,7 @@ def MainMenu():
         AddDir('My Account',AccLink,1,Images + 'MyAcc.png')
         AddDir('Live TV','url',2,Images + 'Live TV.png')
         AddDir('Movies (Coming Soon)','Movies',8,Images + 'movies.png')
-        AddDir('TVShows (Coming Soon)','Movies',9,Images + 'tvshows.png')
+        AddDir('TVShows (Coming Soon)','TVshows',9,Images + 'tvshows.png')
         AddDir('Extras','Extras',5,Images + 'extras.png')
         AddDir('Clear Cache','Clear Cache',7,Images + 'cache.png')
         AddDir('Settings','settings',4,Images + 'settings.png')
@@ -93,7 +92,7 @@ def AddAccInfo(name,url,mode,iconimage):
 def AddDir(name, url, mode, iconimage, description="", isFolder=True, background=None):
     u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&iconimage="+urllib.quote_plus(iconimage)+"&description="+urllib.quote_plus(description)
     a=sys.argv[0]+"?url=None&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&iconimage="+urllib.quote_plus(iconimage)+"&description="+urllib.quote_plus(description)
-    print name.replace('-[US]','').replace('-[EU]','').replace('[COLOR yellow]','').replace('[/COLOR]','').replace(' (G)','')+'='+a
+    #print name.replace('-[US]','').replace('-[EU]','').replace('[COLOR yellow]','').replace('[/COLOR]','').replace(' (G)','')+'='+a
     liz = xbmcgui.ListItem(name, iconImage=iconimage, thumbnailImage=iconimage)
     liz.setInfo(type="Video", infoLabels={ "Title": name, "Plot": description})
     liz.setProperty('IsPlayable', 'true')
@@ -114,32 +113,71 @@ def Get_Params():
             if (len(splitparams)) == 2:
                 param[splitparams[0].lower()] = splitparams[1]
     return param
+	
+def correctPVR():
+
+	teqiq = xbmcaddon.Addon('plugin.video.teqiqiptv')
+	username_text = teqiq.getSetting(id='Username')
+	password_text = teqiq.getSetting(id='Password')
+	jsonSetPVR = '{"jsonrpc":"2.0", "method":"Settings.SetSettingValue", "params":{"setting":"pvrmanager.enabled", "value":true},"id":1}'
+	IPTVon 	   = '{"jsonrpc":"2.0","method":"Addons.SetAddonEnabled","params":{"addonid":"pvr.iptvsimple","enabled":true},"id":1}'
+	nulldemo   = '{"jsonrpc":"2.0","method":"Addons.SetAddonEnabled","params":{"addonid":"pvr.demo","enabled":false},"id":1}'
+	loginurl   = "http://teqiq.xyz:2095/get.php?username=" + username_text + "&password=" + password_text + "&type=m3u&output=mpegts"
+	EPGurl     = "http://teqiq.xyz:2095/xmltv.php?username=" + username_text + "&password=" + password_text + "&type=m3u_plus&output=ts"
+
+	xbmc.executeJSONRPC(jsonSetPVR)
+	xbmc.executeJSONRPC(IPTVon)
+	xbmc.executeJSONRPC(nulldemo)
+	
+	moist = xbmcaddon.Addon('pvr.iptvsimple')
+	moist.setSetting(id='m3uUrl', value=loginurl)
+	moist.setSetting(id='epgUrl', value=EPGurl)
+	moist.setSetting(id='m3uCache', value="false")
+	moist.setSetting(id='epgCache', value="false")
+	choice = xbmcgui.Dialog().ok("[COLOR white]PVR SETUP DONE[/COLOR]",'[COLOR white]We\'ve copied your info to the PVR Guide[/COLOR]',' ','[COLOR white]This includes the EPG please allow time to populate now click launch PVR[/COLOR]')
+	
+
+def LaunchPVR():
+	xbmc.executebuiltin('ActivateWindow(TVGuide)')
+	
 def OpenSettings():
     ADDON.openSettings()
     MainMenu()	
 def Clear_Cache():
-    choice = xbmcgui.Dialog().yesno('Clear your Cache?', 'If you still cant see your account after ok button is clicked your details are incorrect', nolabel='Cancel',yeslabel='Delete')
+    choice = xbmcgui.Dialog().yesno('Clear your Cache?', 'If you still cant see your account after ok button is clicked your details are incorrect', nolabel='Cancel',yeslabel='OK')
     if choice == 1:
         GoDev.Wipe_Cache()
-def wizard2(name,url,description):
-    path = xbmc.translatePath(os.path.join('special://home/addons','packages'))
-    dp = xbmcgui.DialogProgress()
-    dp.create("TeQ IQ IPTV WORKING HARD","Downloading ",'', 'Please Wait')
-    lib=os.path.join(path, name+'.zip')
-    try:
-       os.remove(lib)
-    except:
-       pass
-    downloader.download(url, lib, dp)
-    addonfolder = xbmc.translatePath(os.path.join('special://','home'))
-    time.sleep(2)
-    dp.update(0,"", "Extracting Zip Please Wait")
-    print '======================================='
-    print addonfolder
-    print '======================================='
-    extract.all(lib,addonfolder,dp)
-    dp = xbmcgui.Dialog()
-    dp.ok("TeQ IQ IPTV", 'TV Guide Integration Complete - Now open your TVGuide & Enjoy. Any Issues please ask us on facebook or check the website.', '', '')
+
+def wizard2(name,url,description,showcontext=False):
+        u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)
+        ok=True
+        liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
+        liz.setInfo( type="Video", infoLabels={ "Title": name } )
+        liz.setProperty( "Fanart_Image", fanart )
+        if showcontext:
+            contextMenu = []
+            if showcontext == 'fav':
+                contextMenu.append(('Remove from '+ADDON_NAME+' Favorites','XBMC.RunPlugin(%s?mode=5&name=%s)'
+                                    %(sys.argv[0], urllib.quote_plus(name))))
+            if not name in FAV:
+                contextMenu.append(('Add to '+ADDON_NAME+' Favorites','XBMC.RunPlugin(%s?mode=4&name=%s&url=%s&iconimage=%s&fav_mode=%s)'
+                         %(sys.argv[0], urllib.quote_plus(name), urllib.quote_plus(url), urllib.quote_plus(iconimage), mode)))
+            liz.addContextMenuItems(contextMenu)
+        ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
+        return ok
+        xbmcplugin.endOfDirectory(int(sys.argv[1]))
+def playXml(url):
+        xbmc.executebuiltin('PlayMedia(%s)' % url)
+	
+def wizard3():
+	dialog = xbmcgui.Dialog()
+	path = xbmc.translatePath( 'special://home/addons/plugin.video.ottalpha-3.0/' )
+	d = os.listdir(path)
+	if 'plugin.video.testpiece' in d:
+		xbmc.executebuiltin('RunAddon(plugin.video.testpiece)')
+	else:
+		dialog.ok('Not Installed','You need ivue guide in order to use this')
+
 def addXMLMenu(name,url,mode,iconimage,fanart,description):
         u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&iconimage="+urllib.quote_plus(iconimage)+"&fanart="+urllib.quote_plus(fanart)+"&description="+urllib.quote_plus(description)
         ok=True
@@ -149,20 +187,55 @@ def addXMLMenu(name,url,mode,iconimage,fanart,description):
         ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
         return ok
 def ExtraMenu():
-    link = OPEN_URL('http://url/development/xml/toolboxextras.xml').replace('\n','').replace('\r','')  #Spaf
+    link = OPEN_URL('http://matsbuilds.uk/jack/SportsCatchUp/football.txt').replace('\n','').replace('\r','')  #Spaf
     match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
     for name,url,iconimage,FanArt,description in match:
-        addXMLMenu(name,url,6,iconimage,FanArt,description)
+        addXMLMenu(name,url,13,iconimage,FanArt,description)
 def Movies():
-    link = OPEN_URL('http://url/development/xml/moviesandtv.xml').replace('\n','').replace('\r','')  #Spaf
-    match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
-    for name,url,iconimage,FanArt,description in match:
-        addXMLMenu(name,url,6,iconimage,FanArt,description)
+	dialog = xbmcgui.Dialog()
+	path = xbmc.translatePath( 'special://home/addons' )
+	d = os.listdir(path)
+	if 'plugin.program.fixtures' in d:
+		xbmc.executebuiltin('RunAddon(plugin.program.fixtures)')
+	else:
+		dialog.ok('Not Installed','You need extended info to use this')
+
 def TVShows():
-    link = OPEN_URL('http://url/development/xml/moviesandtv.xml').replace('\n','').replace('\r','')  #Spaf
-    match = re.compile('name="(.+?)".+?rl="(.+?)".+?mg="(.+?)".+?anart="(.+?)".+?escription="(.+?)"').findall(link)
-    for name,url,iconimage,FanArt,description in match:
-        addXMLMenu(name,url,6,iconimage,FanArt,description)
+	dialog = xbmcgui.Dialog()
+	path = xbmc.translatePath( 'special://home/addons' )
+	d = os.listdir(path)
+	if 'plugin.program.mtvguidepro' in d:
+		xbmc.executebuiltin('RunAddon(plugin.program.mtvguidepro)')
+	else:
+		dialog.ok('Not Installed','You need mayfair pro guide in order to use this you can get it from here http://mayfairguides.com/pro')
+
+def gettextdata(url):
+    mayfair_show_busy_dialog()
+    try:
+        req = urllib2.Request(url)
+        reqq = urllib2.urlopen(req)
+        data = reqq.read()
+        reqq.close()
+        mayfair_hide_busy_dialog()
+        if data == '':
+            data = 'No message to display, please check back later!'
+        return data
+    except:
+        import sys
+        import traceback as tb
+        (etype, value, traceback) = sys.exc_info()
+        tb.print_exception(etype, value, traceback)
+        mayfair_hide_busy_dialog()
+        dialog = xbmcgui.Dialog()
+        dialog.ok("Error!","Error connecting to server!","","Please try again later.")
+
+def mayfair_show_busy_dialog():
+    xbmc.executebuiltin('ActivateWindow(10138)')
+
+def mayfair_hide_busy_dialog():
+    xbmc.executebuiltin('Dialog.Close(10138)')
+    while xbmc.getCondVisibility('Window.IsActive(10138)'):
+        xbmc.sleep(100)
 
 		
 
@@ -203,3 +276,11 @@ elif mode == 5:
 	ExtraMenu()
 elif mode == 6:
 	wizard2(name,url,description)
+elif mode == 10:
+	wizard3()
+elif mode == 11:
+	correctPVR()
+elif mode == 12:
+	LaunchPVR()
+elif mode == 13:
+	playXml(url)
