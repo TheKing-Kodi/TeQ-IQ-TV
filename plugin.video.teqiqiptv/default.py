@@ -72,10 +72,10 @@ def peamenyy(params):
        plugintools.log(pnimi+vod_channels("TG9naW4gU3VjY2Vzcw=="))
        plugintools.add_item( action=vod_channels("c2VjdXJpdHlfY2hlY2s="),  title="live TV" , thumbnail=os.path.join(LOAD_LIVE,vod_channels("bGl2ZXR2LnBuZw==")) , fanart=os.path.join(LOAD_LIVE,vod_channels("YmFja2dyb3VuZC5wbmc=")) , folder=True )
        plugintools.add_item( action=vod_channels("ZGV0ZWN0X21vZGlmaWNhdGlvbg=="),   title="VOD" , thumbnail=os.path.join(LOAD_LIVE,vod_channels("dm9kLnBuZw==")) , fanart=os.path.join(LOAD_LIVE,vod_channels("YmFja2dyb3VuZC5wbmc=")) , folder=True )
-       plugintools.addItem('Launch Guide','pvr',12,orig.Images + 'extras.png',orig.Images + 'background.png')
+       plugintools.addItem('Launch TV Guide','pvr',12,orig.Images + 'extras.png',orig.Images + 'background.png')
        orig.AddDir('Clear Cache','Clear Cache',7,orig.Images + 'clear.png')
        plugintools.add_item( action=vod_channels("bGljZW5zZV9jaGVjaw=="), title="[COLOR yellow][B][I]Settings[/I][/B][/COLOR]" , thumbnail=os.path.join(LOAD_LIVE,vod_channels("bG9nby5wbmc=")) , fanart=os.path.join(LOAD_LIVE,vod_channels("YmFja2dyb3VuZC5wbmc=")), folder=False )
-       plugintools.addItem('[COLOR yellow][B][I]Click to Setup Guide[/I][/B][/COLOR]','pvr',11,orig.Images + 'extras.png',orig.Images + 'background.png')
+       plugintools.addItem('[COLOR yellow][B][I]Click to Setup TV Guide[/I][/B][/COLOR]','pvr',11,orig.Images + 'extras.png',orig.Images + 'background.png')
 	   
     elif orig.mode != 5:
        plugintools.add_item( action=vod_channels("bGljZW5zZV9jaGVjaw=="),  title="[COLOR yellow][B]Click here to enter login[/B][/COLOR]" , thumbnail=os.path.join(LOAD_LIVE,vod_channels("bG9nby5wbmc=")) , fanart=os.path.join(LOAD_LIVE,vod_channels("YmFja2dyb3VuZC5wbmc=")) , folder=False )
