@@ -287,10 +287,6 @@ def viewBuild(name):
 	setView('files', 'viewType')
 
 def apkMenu():
-	kver, kurl, kdesc = wiz.latestApk('kodi')
-	sver, surl, sdesc = wiz.latestApk('spmc')
-	#addFile('Kodi (v%s)' % kver     ,'apkinstall',  'kodi', kurl, description=kdesc, icon=ICONAPK, themeit=THEME1)
-	#addFile('SPMC (v%s)' % sver     ,'apkinstall',  'spmc', surl, description=sdesc, icon=ICONAPK, themeit=THEME1)
 	if HIDESPACERS == 'No': addFile(wiz.sep(), '', themeit=THEME3)
 	if not APKFILE == 'http://':
 		APKWORKING = wiz.workingURL(APKFILE)

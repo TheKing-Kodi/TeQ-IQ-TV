@@ -70,7 +70,7 @@ def peamenyy(params):
     channels = kontroll()
     if channels == 1 and orig.mode != 5:
        plugintools.log(pnimi+vod_channels("TG9naW4gU3VjY2Vzcw=="))
-       plugintools.add_item( action=vod_channels("c2VjdXJpdHlfY2hlY2s="),  title="live TV" , thumbnail=os.path.join(LOAD_LIVE,vod_channels("bGl2ZXR2LnBuZw==")) , fanart=os.path.join(LOAD_LIVE,vod_channels("YmFja2dyb3VuZC5wbmc=")) , folder=True )
+       plugintools.add_item( action=vod_channels("c2VjdXJpdHlfY2hlY2s="),  title="Live TV" , thumbnail=os.path.join(LOAD_LIVE,vod_channels("bGl2ZXR2LnBuZw==")) , fanart=os.path.join(LOAD_LIVE,vod_channels("YmFja2dyb3VuZC5wbmc=")) , folder=True )
        plugintools.add_item( action=vod_channels("ZGV0ZWN0X21vZGlmaWNhdGlvbg=="),   title="VOD" , thumbnail=os.path.join(LOAD_LIVE,vod_channels("dm9kLnBuZw==")) , fanart=os.path.join(LOAD_LIVE,vod_channels("YmFja2dyb3VuZC5wbmc=")) , folder=True )
        plugintools.addItem('Launch TV Guide','pvr',12,orig.Images + 'extras.png',orig.Images + 'background.png')
        orig.AddDir('Clear Cache','Clear Cache',7,orig.Images + 'clear.png')

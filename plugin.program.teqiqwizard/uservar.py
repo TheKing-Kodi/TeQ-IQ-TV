@@ -3,8 +3,8 @@ import os, xbmc, xbmcaddon
 #########################################################
 ### User Edit Variables #################################
 #########################################################
-ADDON_ID       = xbmcaddon.Addon().getAddonInfo('id')
-ADDONTITLE     = 'TeQ IQ Installer'
+ADDON_ID       = xbmcaddon.Addon('plugin.program.teqiqwizard').getAddonInfo('id')
+ADDONTITLE     = 'Teqiq Installer'
 EXCLUDES       = [ADDON_ID]
 # Text File with build info in it.
 BUILDFILE      = 'http://teqiqtv.us/Teqiq/Repo/wizardfiles/build.txt'
@@ -22,7 +22,7 @@ ADDONFILE      = 'http://teqiqtv.us/Teqiq/Repo/wizardfiles/addon.txt'
 ADVANCEDFILE   = 'http://teqiqtv.us/Teqiq/Repo/wizardfiles/advanced.txt'
 
 # Dont need to edit just here for icons stored locally
-PATH           = xbmcaddon.Addon().getAddonInfo('path')
+PATH           = xbmcaddon.Addon('plugin.program.teqiqwizard').getAddonInfo('path')
 ART            = os.path.join(PATH, 'resources', 'art')
 
 #########################################################
@@ -55,7 +55,7 @@ SPACER         = '*'
 COLOR1         = 'orange'
 COLOR2         = 'white'
 # Primary menu items   / %s is the menu item and is required
-THEME1         = '[COLOR '+COLOR1+'][B][I]([COLOR '+COLOR2+']TeQ IQ[/COLOR])[/B][/COLOR] [COLOR '+COLOR2+']%s[/COLOR][/I]'
+THEME1         = '[COLOR '+COLOR1+'][B][I]([COLOR '+COLOR2+']Teqiq[/COLOR])[/B][/COLOR] [COLOR '+COLOR2+']%s[/COLOR][/I]'
 # Build Names          / %s is the menu item and is required
 THEME2         = '[COLOR '+COLOR2+']%s[/COLOR]'
 # Alternate items      / %s is the menu item and is required
