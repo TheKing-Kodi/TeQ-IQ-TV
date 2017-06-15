@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.program.macreader" name="[COLOR darkorange]AAA Mac Reader[/COLOR]" version="1.02" provider-name="TeQ IQ">
+<addon id="toolz.service.macreader" name="[COLOR darkorange]AAA Mac Reader[/COLOR]" version="1.02" provider-name="TeQ IQ">
     <requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 	</requires>
