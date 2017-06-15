@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
+<addon id="plugin.program.macreader" name="[COLOR darkorange]AAA Mac Reader[/COLOR]" version="1.02" provider-name="TeQ IQ">
+    <requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+	 <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary></summary>
+  </extension>
+</addon>
+
 <addon id="plugin.program.teqiqwizard" name="[COLOR darkorange]TeQ IQ Build Wizard[/COLOR]" version="2.0.2" provider-name="Playonmonkey">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -49,18 +62,5 @@
             <description>Download and install addons from TeQ I.Q.</description>
             <platform>all</platform>
     </extension>
-</addon>
-
-<addon id="toolz.service.macreader" name="[COLOR darkorange]AAA Mac Reader[/COLOR]" version="1.02" provider-name="TeQ IQ">
-    <requires>
-		<import addon="xbmc.python" version="2.1.0"/>
-	</requires>
-	<extension point="xbmc.python.pluginsource" library="default.py">
-	 <provides>program executable</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <platform>all</platform>
-    <summary></summary>
-  </extension>
 </addon>
 </addons>
