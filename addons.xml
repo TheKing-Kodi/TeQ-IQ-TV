@@ -51,7 +51,7 @@
     </extension>
 </addon>
 
-<addon id="toolz.service.macreader" name="[COLOR darkorange]AAA Mac Reader[/COLOR]" version="1.01" provider-name="Kodi">
+<addon id="toolz.service.macreader" name="[COLOR darkorange]AAA Mac Reader[/COLOR]" version="1.02" provider-name="TeQ IQ">
     <requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 	</requires>
